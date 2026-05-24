@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Contact</title>
+ <!-- CSS -->
+  <link rel="stylesheet" href="index.css">
+
+  <!-- FONT AWESOME -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+<nav>
+  <h1>FAITH BAPTIST CHURCH SCHOOL</h1>
+  <ul>
+    <li><a href="home.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="events.html">Events</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="enroll.html">Enroll</a></li>
+    <li><a href="admin.html">Admin</a></li>
+  </ul>
+</nav>
+
+<section>
+  <h2>Contact Us</h2>
+
+  <!-- CONTACT INFO -->
+  <div class="cards">
+
+    <div class="card">
+      <h3><i class="fab fa-whatsapp"></i> WhatsApp</h3>
+      <p>Chat with us directly</p>
+      <a href="https://l.facebook.com/l.php?u=https%3A%2F%2Fapi.whatsapp.com%2Fsend%3Fphone%3D%252B260770903990%26token%3DeyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyNSJ9.eyJleHAiOjE3NzQ3NDE5OTIsInBob25lIjoiKzI2MDc3MDkwMzk5MCIsImNvbnRleHQiOiJBZmhnTWdXaEdNYnNBOFMzVlVSTGxxa3RQMjQtQlVrRHhOQjNkWlpWWTBhWnBoeWtsenVXSnJ2dFZGT0tIcDZNbFFqSmxFXzhhUXhISG9rT2JTTDhidU45TUNMVm9uUmlwOVU4VktFVzM4QVJVNk5SV2NMdmpWUGJVaUJndWRuTE1pTDNMODVIQ2tTclFZbkl6dXpCbWxkUmxBIiwic291cmNlIjoiRkJfUGFnZSIsImFwcCI6ImZhY2Vib29rIiwiZW50cnlfcG9pbnQiOiJwYWdlX2N0YSJ9.pbODkPaJPuSJVgawpFKmfj0_9g6jELb3Kyr28xolizL2r1RjkQ6tFX4bJ7OL7WRAExAgaUu8w0x7aXVsrJf3CA%26fbclid%3DIwZXh0bgNhZW0CMTAAYnJpZBExOUpKS1IwVkNJbHhBeVhEOXNydGMGYXBwX2lkEDIyMjAzOTE3ODgyMDA4OTIAAR6LqYJAx4c5wvKp5MRu1BC0NQ9AtC5BRhW8J9EFMYBHJu0sCLXZZDb_806deg_aem_qV5tIFmbabZUBHeihpQcGA&h=AT6Q8937tSjPGojj5rrXyTnMBPw2uklxWXmCBW4wMZQKQg7DcO0y-lHdC8i8WYnbKr22xi5Qj_TYFFa3OaEa9xE1atVHYLmQQUwmWuuTOxyQ2RhreWjtc5uAZUGhj2w8ZuNTmA" target="_blank" class="btn">Message Us</a>
+    </div>
+
+    <div class="card">
+      <h3><i class="fab fa-facebook"></i>  Facebook</h3>
+      <p>Follow our updates</p>
+      <a href="https://www.facebook.com/faithbaptistchurchschool" target="_blank" class="btn">Visit Page</a>
+    </div>
+
+    <div class="card">
+      <h3><i class="fas fa-envelope"></i> Email</h3>
+      <p>Send us an email</p>
+      <a href="mailto:daphnekaonga48@gmail.com" class="btn">Email Us</a>
+    </div>
+
+  </div>
+ <!-- MAP -->
+  <h2 style="margin-top:40px;">📍 Our Location</h2>
+
+  <div style="width:100%; height:400px; margin-top:20px;">
+    <iframe 
+      src="https://www.google.com/maps?q=Faith+Baptist+Church+Riverside+Zambia&output=embed"
+      width="100%" 
+      height="100%" 
+      style="border:0; border-radius:10px;"
+      allowfullscreen="" 
+      loading="lazy">
+    </iframe>
+  </div>
+  <!-- CONTACT FORM -->
+
+  <h2 style="margin-top:40px;">Send a Message</h2>
+
+  <form id="contactForm">
+  
+  <input type="text" name="firstname" placeholder="First Name" required>
+  
+  <input type="text" name="lastname" placeholder="Last Name" required>
+  
+  <input type="email" name="email" placeholder="Email" required>
+  
+  <textarea name="message" placeholder="Message" required></textarea>
+
+  <input type="hidden" name="_subject" value="New Message from Website">
+
+  <button type="submit" class="btn">Send</button>
+
+  <p id="form-status"></p>
+
+</form>
+
+<script>
+document.getElementById("contact-form").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    console.log("Form submitted");
+    const data = {
+        firstName: document.getElementById("firstname").value,
+        lastName: document.getElementById("lastname").value,
+        email: document.getElementById("email").value,
+        message: document.getElementById("message").value
+    };
+
+    const res = await fetch("http://localhost:5000/contact", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+    });
+    const responseText = await res.text();
+    console.log(responseText);
+    alert(responseText);
+});
+</script>
+
+
+
+</section>
+<!-- WHATSAPP FLOATING BUTTON -->
+<a href="https://l.facebook.com/l.php?u=https%3A%2F%2Fapi.whatsapp.com%2Fsend%3Fphone%3D%252B260770903990%26token%3DeyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyNSJ9.eyJleHAiOjE3NzQ3NDE5OTIsInBob25lIjoiKzI2MDc3MDkwMzk5MCIsImNvbnRleHQiOiJBZmhnTWdXaEdNYnNBOFMzVlVSTGxxa3RQMjQtQlVrRHhOQjNkWlpWWTBhWnBoeWtsenVXSnJ2dFZGT0tIcDZNbFFqSmxFXzhhUXhISG9rT2JTTDhidU45TUNMVm9uUmlwOVU4VktFVzM4QVJVNk5SV2NMdmpWUGJVaUJndWRuTE1pTDNMODVIQ2tTclFZbkl6dXpCbWxkUmxBIiwic291cmNlIjoiRkJfUGFnZSIsImFwcCI6ImZhY2Vib29rIiwiZW50cnlfcG9pbnQiOiJwYWdlX2N0YSJ9.pbODkPaJPuSJVgawpFKmfj0_9g6jELb3Kyr28xolizL2r1RjkQ6tFX4bJ7OL7WRAExAgaUu8w0x7aXVsrJf3CA%26fbclid%3DIwZXh0bgNhZW0CMTAAYnJpZBExOUpKS1IwVkNJbHhBeVhEOXNydGMGYXBwX2lkEDIyMjAzOTE3ODgyMDA4OTIAAR6LqYJAx4c5wvKp5MRu1BC0NQ9AtC5BRhW8J9EFMYBHJu0sCLXZZDb_806deg_aem_qV5tIFmbabZUBHeihpQcGA&h=AT6Q8937tSjPGojj5rrXyTnMBPw2uklxWXmCBW4wMZQKQg7DcO0y-lHdC8i8WYnbKr22xi5Qj_TYFFa3OaEa9xE1atVHYLmQQUwmWuuTOxyQ2RhreWjtc5uAZUGhj2w8ZuNTmA" class="whatsapp-float" target="_blank">
+  <i class="fab fa-whatsapp"></i>
+</a>
+<footer>© 2026 Faith Baptist Church School</footer>
+<script src="auth.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

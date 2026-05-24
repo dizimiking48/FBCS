@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Enroll</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+<nav>
+  <h1>FAITH BAPTIST CHURCH SCHOOL</h1>
+  <ul>
+    <li><a href="home.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="events.html">Events</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="enroll.html">Enroll</a></li>
+    <li><a href="admin.html">Admin</a></li>
+  </ul>
+</nav>
+
+<section>
+  <h2>Student Enrollment</h2>
+
+<form id="enrollForm">
+  
+  <input type="text" name="student_firstname" placeholder="Student First Name" required>
+  
+  <input type="text" name="student_lastname" placeholder="Student Last Name" required>
+  
+  <input type="text" name="parent_firstname" placeholder="Parent First Name" required>
+  
+  <input type="text" name="parent_lastname" placeholder="Parent Last Name" required>
+
+  <input type="text" name="relationship" placeholder="Relationship to Student" required>
+
+  <input type="tel" name="phone" placeholder="Phone Number" required>
+
+  <input type="text" name="address" placeholder="Home Address" required>#
+
+  <input type="email" name="email" placeholder="Email" required>
+  
+  <input type="number" name="age" placeholder="Age" required>
+
+  <input type="text" name="grade" placeholder="Grade Applying For" required>
+
+  <input type="text" name="previous_school" placeholder="Previous School (if any)">
+
+  <input type="text" name="reason" placeholder="Why do you want to enroll?" required>
+
+  <input type="text" name="hear_about" placeholder="How did you hear about us?">
+
+  <input type="text" name="additional_info" placeholder="Additional Information">
+
+  <!-- Consent Checkbox -->
+  <label>
+    <input type="checkbox" name="consent" required>
+    I consent to the processing of this enrollment information.
+  </label>
+
+  <!-- Subject -->
+  <input type="hidden" name="_subject" value="New Student Enrollment">
+  
+
+  <!-- Honeypot (anti-spam trap) -->
+  <input type="text" name="_gotcha" style="display:none">
+
+
+<button class="btn" type="submit">Submit Enrollment</button>
+
+<p id="enroll-status"></p>
+</form>
+
+<script>
+document.getElementById("enroll-form").addEventListener("submit", async (e) => {
+    e.preventDefault();
+console.log("Form submitted");
+    const data = {
+        firstName: document.getElementById("student_firstname").value,
+        lastName: document.getElementById("student_lastname").value,
+        parentFirstName: document.getElementById("parent_firstname").value,
+        parentLastName: document.getElementById("parent_lastname").value,
+        relationship: document.getElementById("relationship").value,
+        phone: document.getElementById("phone").value,
+        address: document.getElementById("address").value,
+        email: document.getElementById("email").value,
+        age: document.getElementById("age").value,
+        grade: document.getElementById("grade").value,
+        previousSchool: document.getElementById("previous_school").value,
+        reason: document.getElementById("reason").value,
+        hearAbout: document.getElementById("hear_about").value,
+        additionalInfo: document.getElementById("additional_info").value
+    };
+
+    const res = await fetch("http://localhost:5000/enroll", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+    });
+    console.log(await res.text());
+    alert(await res.text());
+});
+</script>
+
+
+<footer>© 2026 Faith Baptist Church School</footer>
+
+<script src="auth.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="admin.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div id="loginBox">
+  <h2>Admin Login</h2>
+  <form autocomplete="off" onsubmit="event.preventDefault(); login();">
+    <input type="text" name="fakeusernameremembered" style="display:none" autocomplete="off">
+    <input type="password" name="fakepasswordremembered" style="display:none" autocomplete="off">
+    <input id="email" placeholder="Email" autocomplete="off">
+    <input id="password" type="password" placeholder="Password" autocomplete="new-password">
+    <button type="button" onclick="login()">Login</button>
+  </form>
+</div>
+
+<!-- DASHBOARD -->
+<div id="dashboard" style="display:none">
+
+  <div class="dashboard-header">
+    <h1>📊 Admin Dashboard</h1>
+    <div class="header-buttons">
+      <a href="/contact-admin" class="header-link">📧 Contact Submissions</a>
+      <a href="/enroll-admin" class="header-link">🎓 Enrollments</a>
+      <button type="button" onclick="logout()" class="logout-button">Logout</button>
+    </div>
+  </div>
+
+  <div class="password-change">
+    <h2>🔒 Change Password</h2>
+    <input id="currentPassword" type="password" placeholder="Current password">
+    <input id="newPassword" type="password" placeholder="New password">
+    <input id="confirmPassword" type="password" placeholder="Confirm new password">
+    <button onclick="changePassword()">Change Password</button>
+  </div>
+
+  <!-- SEARCH + FILTER -->
+  <div class="controls">
+    <input id="search" placeholder="Search..." oninput="loadData()">
+
+    <select id="category" onchange="loadData()">
+      <option value="">All courses</option>
+    </select>
+
+    <button onclick="exportCSV()">Export CSV</button>
+  </div>
+
+  <!-- CHART -->
+  <div id="chartContainer">
+    <h2 style="margin-top: 0; text-align: center; color: #38bdf8;">📊 Data Overview</h2>
+    <canvas id="chart"></canvas>
+  </div>
+
+  <!-- ENROLLMENTS TABLE -->
+  <h2 style="margin-top: 40px; margin-bottom: 15px; color: #38bdf8;">🎓 Enrollments</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Course</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+    <tbody id="enrollTable"></tbody>
+  </table>
+
+  <!-- CONTACTS TABLE -->
+  <h2 style="margin-top: 40px; margin-bottom: 15px; color: #38bdf8;">📧 Messages</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Message</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+    <tbody id="contactTable"></tbody>
+  </table>
+
+</div>
+
+<script src="admin.js"></script>
+</body>
+</html>
